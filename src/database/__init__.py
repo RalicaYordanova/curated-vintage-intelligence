@@ -1,1 +1,2 @@
 
+"""Curated Vintage Intelligence package."""
