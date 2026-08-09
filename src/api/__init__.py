@@ -1,2 +1,1 @@
-__init__.py
-main.py
+"""API package."""
