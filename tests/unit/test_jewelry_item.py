@@ -12,3 +12,11 @@ def test_create_valid_jewelry_item():
     assert item.brand == "Miriam Haskell"
     assert item.category == "Bracelet"
     assert item.purchase_price == 70.0
+
+def test_negative_purchase_price_is_rejected():
+    with pytest.raises(ValidationError):
+        JewelryItem(
+            category="Bracelet",
+            condition="Good",
+            purchase_price=-10
+        )
