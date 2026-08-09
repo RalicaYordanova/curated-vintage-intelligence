@@ -3,4 +3,4 @@
 This directory contains non-sensitive sample datasets
 for development, testing and demonstration purposes.
 
-Private market data is not stored in this repository.
+Private market data is not stored in this repo.
