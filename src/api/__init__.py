@@ -1,2 +1,2 @@
-
-"""Curated Vintage Intelligence package."""
+__init__.py
+main.py
