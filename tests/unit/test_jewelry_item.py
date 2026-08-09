@@ -24,3 +24,9 @@ def test_negative_purchase_price_is_rejected():
             condition="Good",
             purchase_price=-10
         )
+        
+def test_missing_category_is_rejected():
+    with pytest.raises(ValidationError):
+        JewelryItem(
+            condition="Very Good"
+        )
