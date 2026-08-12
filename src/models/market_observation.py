@@ -1,20 +1,44 @@
-import pytest
-from pydantic import ValidationError
+from datetime import date
+from typing import Literal
 
-from src.models.market_observation import MarketObservation
+from pydantic import BaseModel, Field
 
 
-def test_create_valid_market_observation():
-    observation = MarketObservation(
-        brand="Monet",
-        category="Earclips",
-        sold_price=52.0,
-        platform="Vinted",
-        confirmed_sale=True
+class MarketObservation(BaseModel):
+    observation_id: str
+    item_id: str
+
+    observation_type: Literal["sold", "asking"]
+
+    platform: str
+    source_type: str
+    source_url: str | None = None
+    listing_title: str | None = None
+
+    asking_price: float | None = Field(default=None, gt=0)
+    sold_price: float | None = Field(default=None, gt=0)
+
+    currency: str = "EUR"
+    sale_confirmed: bool = False
+
+    listing_date: date | None = None
+    sold_date: date | None = None
+    days_to_sell: int | None = Field(default=None, ge=0)
+
+    seller_country: str | None = None
+    buyer_country: str | None = None
+
+    shipping_price: float | None = Field(default=None, ge=0)
+    platform_fees: float | None = Field(default=None, ge=0)
+
+    condition_as_listed: str | None = None
+    description_raw: str | None = None
+    image_url_primary: str | None = None
+
+    reliability_score: float | None = Field(
+        default=None,
+        ge=0,
+        le=1
     )
-
-    assert observation.brand == "Monet"
-    assert observation.category == "Earrings"
-    assert observation.sold_price == 52.0
-    assert observation.platform == "Vinted"
-    assert observation.confirmed_sale is True
+    notes: str | None = None
+    notes: str | None = None
