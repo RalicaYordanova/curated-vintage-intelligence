@@ -26,6 +26,7 @@ class MarketObservation(BaseModel):
     days_to_sell: int | None = Field(default=None, ge=0)
 
     seller_country: str | None = None
+    buyer_country: str | None = None
 
     shipping_price: float | None = Field(default=None, ge=0)
     platform_fees: float | None = Field(default=None, ge=0)
@@ -39,5 +40,5 @@ class MarketObservation(BaseModel):
         ge=0,
         le=1
     )
-    notes: str | None = None
+
     notes: str | None = None
