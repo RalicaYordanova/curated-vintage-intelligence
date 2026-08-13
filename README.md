@@ -67,3 +67,31 @@ data-driven and ML-based systems, including:
 ## Project Status
 
 Version 0.1 – Data model and architecture
+
+# Curated Vintage Intelligence – Vertical Slice
+
+A small evidence-first valuation service for structured resale-market observations.
+
+## Current vertical slice
+
+Implemented:
+
+- Pydantic validation for market observations
+- Explicit SOLD vs ASKING semantics
+- Deterministic evidence weighting
+- Median-based baseline valuation
+- Anti-anchoring invariant
+- FastAPI `/valuation` endpoint
+- Automated pytest suite
+- Coverage quality gate
+- GitHub Actions CI
+- Dockerized FastAPI service
+- Container health and `/docs` checks
+
+## Core architectural invariant
+
+The expected valuation must not influence the evidence-derived baseline.
+
+Same evidence + different external anchor → same baseline.
+
+New verified evidence → baseline may change.
