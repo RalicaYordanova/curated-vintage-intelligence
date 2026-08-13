@@ -41,3 +41,23 @@ def test_valuation_endpoint_returns_baseline():
     assert body["baseline"] == 16.5
     assert body["evidence_count"] == 2
     assert body["anchor_used_for_baseline"] is False
+
+def test_valuation_endpoint_rejects_invalid_observation():
+    response = client.post(
+        "/valuation",
+        json={
+            "observations": [
+                {
+                    "observation_id": "obs-invalid",
+                    "item_id": "item-001",
+                    "observation_type": "sold",
+                    "platform": "Vestiaire",
+                    "source_type": "marketplace",
+                    "sold_price": -10,
+                    "sale_confirmed": True,
+                }
+            ]
+        },
+    )
+
+    assert response.status_code == 422
