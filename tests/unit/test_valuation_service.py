@@ -35,3 +35,39 @@ def test_external_anchor_does_not_change_baseline():
     )
 
     assert baseline_a == baseline_b
+
+def test_verified_sale_can_change_valuation():
+    before = [
+        MarketObservation(
+            observation_id="obs-sold-1",
+            item_id="item-001",
+            observation_type="sold",
+            platform="Vestiaire",
+            source_type="marketplace",
+            sold_price=15,
+            sale_confirmed=True,
+        ),
+        MarketObservation(
+            observation_id="obs-sold-2",
+            item_id="item-001",
+            observation_type="sold",
+            platform="eBay",
+            source_type="marketplace",
+            sold_price=18,
+            sale_confirmed=True,
+        ),
+    ]
+
+    after = before + [
+        MarketObservation(
+            observation_id="obs-sold-3",
+            item_id="item-001",
+            observation_type="sold",
+            platform="Catawiki",
+            source_type="marketplace",
+            sold_price=80,
+            sale_confirmed=True,
+        )
+    ]
+
+    assert valuate(before) != valuate(after)
