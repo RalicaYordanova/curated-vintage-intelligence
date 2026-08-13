@@ -30,6 +30,9 @@ jobs:
         run: |
           pytest --cov=src --cov-report=term-missing
           
+      - name: Run tests with coverage
+        run: pytest --cov=src --cov-report=term-missing --cov-fail-under=86
+          
       - name: Build Docker image
         run: docker build -t cvi-valuation . 
 
