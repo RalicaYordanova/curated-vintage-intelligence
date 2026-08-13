@@ -14,3 +14,15 @@ def test_get_observation_price_for_sold():
     )
 
     assert get_observation_price(observation) == 224
+
+def test_get_observation_price_for_asking():
+    observation = MarketObservation(
+        observation_id="obs-asking",
+        item_id="dior-001",
+        observation_type="asking",
+        platform="eBay",
+        source_type="marketplace",
+        asking_price=90,
+    )
+
+    assert get_observation_price(observation) == 90
