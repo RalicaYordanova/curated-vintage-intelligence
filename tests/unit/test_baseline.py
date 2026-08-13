@@ -63,8 +63,7 @@ def test_calculate_baseline_uses_only_sold_prices():
     ]
 
     assert calculate_baseline(observations) == 16.5
-
- def test_calculate_baseline_rejects_asking_only_evidence():
+def test_calculate_baseline_rejects_asking_only_evidence():
     observations = [
         MarketObservation(
             observation_id="obs-asking",
