@@ -4,6 +4,7 @@ from src.valuation.baseline import (
     get_observation_price,
     calculate_baseline,
 )
+import pytest
 
 
 def test_get_observation_price_for_sold():
@@ -62,3 +63,21 @@ def test_calculate_baseline_uses_only_sold_prices():
     ]
 
     assert calculate_baseline(observations) == 16.5
+
+ def test_calculate_baseline_rejects_asking_only_evidence():
+    observations = [
+        MarketObservation(
+            observation_id="obs-asking",
+            item_id="item-001",
+            observation_type="asking",
+            platform="Etsy",
+            source_type="marketplace",
+            asking_price=80,
+        )
+    ]
+
+    with pytest.raises(
+        ValueError,
+        match="No realized-sale evidence",
+    ):
+        calculate_baseline(observations)
