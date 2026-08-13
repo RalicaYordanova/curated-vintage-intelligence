@@ -6,4 +6,4 @@ def valuate(
     observations: list[MarketObservation],
     external_anchor: float | None = None,
 ) -> float:
-    return calculate_baseline(observations)
+    return calculate_baseline(observations) 
