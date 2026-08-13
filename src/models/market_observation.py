@@ -42,3 +42,36 @@ class MarketObservation(BaseModel):
     )
 
     notes: str | None = None
+    @model_validator(mode="after")
+def validate_observation_semantics(self):
+    if self.observation_type == "sold":
+        if self.sold_price is None:
+            raise ValueError(
+                "sold_price is required when observation_type='sold'"
+            )
+
+        if not self.sale_confirmed:
+            raise ValueError(
+                "sale_confirmed must be True for sold observations"
+            )
+
+    elif self.observation_type == "asking":
+        if self.asking_price is None:
+            raise ValueError(
+                "asking_price is required when observation_type='asking'"
+            )
+
+        if self.sold_price is not None:
+            raise ValueError(
+                "sold_price must be empty for asking observations"
+            )
+
+        if self.sale_confirmed:
+            raise ValueError(
+                "sale_confirmed cannot be True for asking observations"
+            )
+
+    return self
+    
+     
+
