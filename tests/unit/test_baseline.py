@@ -1,5 +1,9 @@
 from src.models.market_observation import MarketObservation
 from src.valuation.baseline import get_observation_price
+from src.valuation.baseline import (
+    get_observation_price,
+    calculate_baseline,
+)
 
 
 def test_get_observation_price_for_sold():
