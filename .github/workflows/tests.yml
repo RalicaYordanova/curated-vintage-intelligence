@@ -37,6 +37,8 @@ jobs:
         run: docker build -t cvi-valuation . 
 
       - name: Run Docker container
+        env:
+          PYTHONPATH: .
         run: python -m pytest --cov=src --cov-report=term-missing --cov-fail-under=86
 
       - name: Check container health
