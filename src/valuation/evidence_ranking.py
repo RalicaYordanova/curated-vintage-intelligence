@@ -10,3 +10,6 @@ def rank_evidence(
         key=lambda obs: evidence_weight(obs.observation_type),
         reverse=True,
     )
+
+def test_empty_evidence_returns_empty_list():
+    assert rank_evidence([]) == []
