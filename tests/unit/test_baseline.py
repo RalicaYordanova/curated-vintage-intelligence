@@ -26,3 +26,35 @@ def test_get_observation_price_for_asking():
     )
 
     assert get_observation_price(observation) == 90
+
+def test_calculate_baseline_uses_only_sold_prices():
+    observations = [
+        MarketObservation(
+            observation_id="obs-sold-1",
+            item_id="item-001",
+            observation_type="sold",
+            platform="Vestiaire",
+            source_type="marketplace",
+            sold_price=15,
+            sale_confirmed=True,
+        ),
+        MarketObservation(
+            observation_id="obs-sold-2",
+            item_id="item-001",
+            observation_type="sold",
+            platform="eBay",
+            source_type="marketplace",
+            sold_price=18,
+            sale_confirmed=True,
+        ),
+        MarketObservation(
+            observation_id="obs-asking",
+            item_id="item-001",
+            observation_type="asking",
+            platform="Etsy",
+            source_type="marketplace",
+            asking_price=80,
+        ),
+    ]
+
+    assert calculate_baseline(observations) == 16.5
