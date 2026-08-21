@@ -6,5 +6,8 @@ router = APIRouter()
 templates = Jinja2Templates(directory="src/web/templates")
 
 @router.get("/items/review")
-def review_item():
-  return "Review Page" 
+def review_item(request: Request):
+    return templates.TemplateResponse(
+        "review.html",
+        {"request": request},
+    )
