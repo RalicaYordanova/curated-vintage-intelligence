@@ -12,11 +12,11 @@ class JewelryExtraction(BaseModel):
     brand: Optional[str] = None
     category: Optional[str] = None
 
-    signature_text: Optional[str] = None
+    signature: Optional[str] = None
 
-    era_text: Optional[str] = None
-    material_text: Optional[str] = None
-    condition_text: Optional[str] = None
+    era: Optional[str] = None
+    material: Optional[str] = None
+    condition: Optional[str] = None
 
     purchase_price: Optional[float] = Field(
         default=None,
