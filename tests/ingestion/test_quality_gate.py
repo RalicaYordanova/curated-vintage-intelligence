@@ -10,7 +10,7 @@ def test_gm_signature_without_brand_passes():
 
     result = validate_extraction(extraction)
 
-    assert extraction.signature_text == "GM"
+    assert extraction.signature == "GM"
     assert extraction.brand is None
     assert result.review_required is False
     assert result.warnings == []
@@ -18,7 +18,7 @@ def test_gm_signature_without_brand_passes():
 
 def test_brand_inferred_from_signature_requires_review():
     extraction = JewelryExtraction(
-        signature_text="GM",
+        signature ="GM",
         brand="Grosse & Monneret",
     )
 
