@@ -33,5 +33,5 @@ def calculate_valuation(request: ValuationRequest):
         "anchor_used_for_baseline": False,
     }
 
-  app.include_router(router)
+app.include_router(router)
 
