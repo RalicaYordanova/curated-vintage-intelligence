@@ -3,7 +3,7 @@ from fastapi.templating import Jinja2Templates
 
 router = APIRouter()
 
-templates = Jinja2Templates(directory="src/web/templates")
+templates = Jinja2Templates(directory="web/templates")
 
 @router.get("/items/review")
 def review_item(request: Request):
