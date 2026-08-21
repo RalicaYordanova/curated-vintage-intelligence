@@ -1,8 +1,19 @@
 <h1>Review Jewelry Extraction</h1>
-<label for="brand">Brand:</label>
-<input
-    id="brand"
-    name="brand"
-    value="{{ extraction.brand }}"
->
-<p>Extracted signature: <strong>{{ extraction.signature }}</strong></p>
+
+<form method="post" action="/items/review">
+
+    <label for="brand">Brand:</label>
+    <input
+        id="brand"
+        name="brand"
+        value="{{ extraction.brand }}"
+    >
+
+    <p>
+        Extracted signature:
+        <strong>{{ extraction.signature }}</strong>
+    </p>
+
+    <button type="submit">Confirm Review</button>
+
+</form>
