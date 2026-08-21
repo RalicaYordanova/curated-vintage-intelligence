@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from src.web.routes import router
 
 from src.models.market_observation import MarketObservation
 from src.valuation.service import valuate
@@ -31,4 +32,6 @@ def calculate_valuation(request: ValuationRequest):
         "evidence_count": len(request.observations),
         "anchor_used_for_baseline": False,
     }
+
+  app.include_router(router)
 
