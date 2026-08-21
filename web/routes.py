@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Request
 from fastapi.templating import Jinja2Templates
+from src.ingestion.models import JewelryExtraction
 
 router = APIRouter()
 
