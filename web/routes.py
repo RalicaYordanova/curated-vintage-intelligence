@@ -8,6 +8,7 @@ templates = Jinja2Templates(directory="src/web/templates")
 @router.get("/items/review")
 def review_item(request: Request):
     return templates.TemplateResponse(
-        "review.html",
-        {"request": request},
-    )
+      request=request,
+      name="review.html",
+      context={},
+)
