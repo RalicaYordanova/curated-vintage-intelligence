@@ -4,7 +4,7 @@ from src.validation.ingestion_quality_gate import validate_extraction
 
 def test_gm_signature_without_brand_passes():
     extraction = JewelryExtraction(
-        signature_text="GM",
+        signature ="GM",
         brand=None,
     )
 
