@@ -14,7 +14,7 @@ def validate_extraction(
 ) -> QualityGateResult:
     warnings = []
 
-    if extraction.signature_text and extraction.brand:
+    if extraction.signature and extraction.brand:
         warnings.append(
             "Brand attribution requires evidence beyond signature text."
         )
