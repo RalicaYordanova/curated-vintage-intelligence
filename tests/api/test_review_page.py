@@ -10,4 +10,4 @@ def test_review_page_is_available():
     response = client.get("/items/review")
 
     assert response.status_code == 200
-    assert "Review Jewelry Extraction" in response.text
+    assert "Confirm Review" in response.text
