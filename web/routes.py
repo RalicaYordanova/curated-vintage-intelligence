@@ -24,3 +24,7 @@ def review_item(request: Request):
             "extraction": extraction,
         },
     )
+    
+@router.post("/items/review")
+def confirm_review():
+    return {"message": "Review confirmed"}
