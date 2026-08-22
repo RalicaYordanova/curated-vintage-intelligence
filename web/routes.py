@@ -26,14 +26,15 @@ def review_item(request: Request):
     )
     
 @router.post("/items/review")
-def confirm_review():
+def confirm_review(
     item_id: int = Form(...),
     brand: str = Form(...),
 ):
-    return {"message": "Review confirmed",
-            "item_id": item_id,
-            "brand": brand,
-           }
+    return {
+        "message": "Review confirmed",
+        "item_id": item_id,
+        "brand": brand,
+    }
 
 
 
